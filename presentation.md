@@ -6,6 +6,7 @@ marp: true
 
 # <!--fit-->Elasticsearch + Kibana
 Matej Kopecky, Leonie Böger
+ESD Fall 2024
 
 ---
 
