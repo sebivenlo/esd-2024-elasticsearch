@@ -120,3 +120,15 @@ https://github.com/elastic/elasticsearch/blob/main/distribution/src/config/elast
 # Assignment
 - ??
 
+
+
+# Sources
+
+https://medium.com/tech-explained/elasticsearch-explained-411e300413c7
+https://medium.com/tech-explained/4-steps-to-setting-up-the-perfect-elasticsearch-test-environment-7d7ccf4bdeb9
+https://medium.com/tech-explained/getting-hands-on-with-elasticsearch-9969a2894f8a
+
+(freedium.cfd *cough cough*)
+
+https://www.elastic.co/guide/en/elasticsearch/reference/current/elasticsearch-intro-what-is-es.html
+https://www.elastic.co/customers/success-stories
