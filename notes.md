@@ -14,29 +14,44 @@ First released in 2010. Gained popularity due to ability to scale (horizontal sc
 Rebranded to Elastic Stack in 2015, with additional tools - Kibana, Logstash and Beats.
 https://www.michael-wutzke.com/wp-content/uploads/2019/02/how-it-works-elastic-stack-beats-logstash-elasticsearch-kibana.png
 
-## Use cases + companies
+## Use cases
 Elasticsearch is used for a wide and growing range of use cases. Here are a few examples:
 
 ## Content Search Engine
-Elasticsearch doesn't use concepts as primary keys or relations, since it is a schema-free/less JSON data storage. You might have noticed, I haven't used word database anywhere.
+Elasticsearch doesn't use concepts as primary keys or relations, since it is a schema-free/less JSON data storage. You might have noticed, I haven't used word database anywhere. It also isn't ACID complaint.
 
-Full-text search: Build a fast, relevant full-text search solution using inverted indexes, tokenization, and text analysis.
+Full-text search: Build a fast, relevant full-text search solution using inverted indexes, tokenization, and text analysis. (We're gonna explain those, don't worry!)
 Vector storage: Store and search vectorized data, and create vector embeddings with built-in and third-party natural language processing (NLP) models.
 Semantic search: Understand the intent and contextual meaning behind search queries using tools like synonyms, dense vector embeddings, and learned sparse query-document expansion.
-Hybrid search: Combine full-text search with vector search using state-of-the-art ranking algorithms.
+Hybrid search: Combine full-text search with vector search using modern ranking algorithms.
 Build search experiences: Add hybrid search capabilities to apps or websites, or build enterprise search engines over your organization’s internal data sources.
 
-## Log aggregator
 
-Used 
+## Use examples
+Volkswagen - uses Elasticsearch for long storage and Kibana for visualization.
+https://www.elastic.co/elasticon/tour/2017/munich/distributed-logging-and-monitoring-at-volkswagen-using-the-elastic-stack
 
-Observability
+Airbus - Near Real-Time access to aircraft technical documents (2 billion blocks of technical documents, 3 000 queries per minute). Results under 2 seconds.
+https://www.elastic.co/customers/airbus
+
+Microsoft - Azure environment monitoring with Elasticsearch for longs and Kibana for visualizations.
+https://www.elastic.co/elasticon/conf/2018/sf/monitor-your-cloud-environment-with-the-logstash-azure-monitoring-module
+
+GitHub - search feature. 2 billion documents. Analytics to reveal rogue users and software bugs by indexing all alerts, events, logs and tracking rate of specific code exceptions.
+https://www.elastic.co/customers/github
+
 
 
 
 ---
 
 # Alternatives
+https://coralogix.com/guides/elasticsearch/elasticsearch-vs-opensearch-key-differences/
+https://bigdataboutique.com/blog/opensearch-vs-elasticsearch-an-up-to-date-comparison-5c1c71
+https://typesense.org/
+https://www.meilisearch.com/
+https://manticoresearch.com/
+
 ## Comparisons (to SQL as well?)
 
 ---
