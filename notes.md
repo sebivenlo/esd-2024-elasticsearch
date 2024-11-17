@@ -52,6 +52,10 @@ https://typesense.org/
 https://www.meilisearch.com/
 https://manticoresearch.com/
 
+The only "fully fledged" alternative is OpenSearch, which is a fork of 2021 version of Elasticsearch. In 2021 Elastic NV announced it would be changing the license of ElasticSearch and Elastic Stack to "Server Side Public License (SSPL)". MongoDB introduced similiar license and it includes restrictions on the use of the software by cloud providers. This is because Elastic NV offers cloud deployment of the Elastic Stack as their main source of revenue and Amazon heavily advertised/pushed for their ElasticSearch AWS deployment. ElasticSearch theoretically still remained open-source, but a part of community believed this license change to be against principles of open-source and with the push from Amazon forked ElasticSearch under the Apache 2.0 License. They named the fork OpenSearch.
+https://medium.com/@TechTim42/elastic-search-and-open-search-a-brief-history-of-the-license-war-8f474743e2ff
+https://en.wikipedia.org/wiki/OpenSearch_(software)
+
 ## Comparisons (to SQL as well?)
 
 ---
