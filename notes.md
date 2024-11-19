@@ -14,11 +14,13 @@ First released in 2010. Gained popularity due to ability to scale (horizontal sc
 Rebranded to Elastic Stack in 2015, with additional tools - Kibana, Logstash and Beats.
 https://www.michael-wutzke.com/wp-content/uploads/2019/02/how-it-works-elastic-stack-beats-logstash-elasticsearch-kibana.png
 
+## Visual use cases examples
+
 ## Use cases
 Elasticsearch is used for a wide and growing range of use cases. Here are a few examples:
 
 ## Content Search Engine
-Elasticsearch doesn't use concepts as primary keys or relations, since it is a schema-free/less JSON data storage. You might have noticed, I haven't used word database anywhere. It also isn't ACID complaint.
+Elasticsearch doesn't use concepts as primary keys or relations, since it is a schema-free/less JSON data storage. You might have noticed, I haven't used word database anywhere. It also isn't ACID complaint, especially with multi-document transactions.
 
 Full-text search: Build a fast, relevant full-text search solution using inverted indexes, tokenization, and text analysis. (We're gonna explain those, don't worry!)
 Vector storage: Store and search vectorized data, and create vector embeddings with built-in and third-party natural language processing (NLP) models.
@@ -52,13 +54,17 @@ https://typesense.org/
 https://www.meilisearch.com/
 https://manticoresearch.com/
 
-The only "fully fledged" alternative is OpenSearch, which is a fork of 2021 version of Elasticsearch. In 2021 Elastic NV announced it would be changing the license of ElasticSearch and Elastic Stack to "Server Side Public License (SSPL)". MongoDB introduced similiar license and it includes restrictions on the use of the software by cloud providers. This is because Elastic NV offers cloud deployment of the Elastic Stack as their main source of revenue and Amazon heavily advertised/pushed for their ElasticSearch AWS deployment. ElasticSearch theoretically still remained open-source, but a part of community believed this license change to be against principles of open-source and with the push from Amazon forked ElasticSearch under the Apache 2.0 License. They named the fork OpenSearch.
+
+## Licensing drama
+
+The only "fully fledged" alternative is OpenSearch (created by Amazon), which is a fork of 2021 version of Elasticsearch. In 2021 Elastic NV announced it would be changing the license of Elasticsearch and Elastic Stack to "Server Side Public License (SSPL)". MongoDB introduced similiar license and it includes restrictions on the use of the software by cloud providers. (Basically SaaS) This is because Elastic NV offers cloud deployment of the Elastic Stack as their main source of revenue and Amazon heavily advertised/pushed for their ElasticSearch AWS deployment. ElasticSearch theoretically still remained open-source, but a part of community believed this license change to be against principles of open-source and with the push from Amazon forked ElasticSearch under the Apache 2.0 License.
 https://medium.com/@TechTim42/elastic-search-and-open-search-a-brief-history-of-the-license-war-8f474743e2ff
 https://en.wikipedia.org/wiki/OpenSearch_(software)
 
 ## Comparisons (to SQL as well?)
 
 ---
+## Available clients (java, c#...)
 
 # Core concepts
 ## Documents
