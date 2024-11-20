@@ -1,7 +1,8 @@
 # Introduction
 
 ## What is it + Elastic Stack
-Elasticsearch is an open-source search and analytics engine that allows for quick, scalable, and efficient searching, analyzing, and storing of large volumes of data.
+Elasticsearch is an open-source search and analytics engine that allows for quick, scalable, and efficient searching, analyzing, and storing of large volumes of data without noticeable performance impact.
+
 It's built on Apache Lucene (search engine library written in Java!) and provides a distributed, multitenant-capable (mode of operation of software where multiple independent instances of one or multiple applications operate in a shared environment) full-text search engine with an HTTP RESTful interface and schema-free JSON documents.
 Elasticsearch is widely used for log and event data analysis, real-time application monitoring, and search functionalities across various types of documents.
 https://www.elastic.co/guide/en/elasticsearch/reference/current/elasticsearch-intro-what-is-es.html
@@ -20,7 +21,7 @@ https://www.michael-wutzke.com/wp-content/uploads/2019/02/how-it-works-elastic-s
 Elasticsearch is used for a wide and growing range of use cases. Here are a few examples:
 
 ## Content Search Engine
-Elasticsearch doesn't use concepts as primary keys or relations, since it is a schema-free/less JSON data storage. You might have noticed, I haven't used word database anywhere. It also isn't ACID complaint, especially with multi-document transactions.
+Elasticsearch doesn't use concepts as primary keys or relations, since it is a schema-free/less NoSQL JSON data storage. You might have noticed, I haven't used word dat abase anywhere. It also isn't ACID complaint, especially with multi-document transactions.
 
 Full-text search: Build a fast, relevant full-text search solution using inverted indexes, tokenization, and text analysis. (We're gonna explain those, don't worry!)
 Vector storage: Store and search vectorized data, and create vector embeddings with built-in and third-party natural language processing (NLP) models.
@@ -58,10 +59,15 @@ https://manticoresearch.com/
 ## Licensing drama
 
 The only "fully fledged" alternative is OpenSearch (created by Amazon), which is a fork of 2021 version of Elasticsearch. In 2021 Elastic NV announced it would be changing the license of Elasticsearch and Elastic Stack to "Server Side Public License (SSPL)". MongoDB introduced similiar license and it includes restrictions on the use of the software by cloud providers. (Basically SaaS) This is because Elastic NV offers cloud deployment of the Elastic Stack as their main source of revenue and Amazon heavily advertised/pushed for their ElasticSearch AWS deployment. ElasticSearch theoretically still remained open-source, but a part of community believed this license change to be against principles of open-source and with the push from Amazon forked ElasticSearch under the Apache 2.0 License.
+
+In September 2024, Elastic NV stated its goals have been met and added AGPLv3 open source license as one of the options.
+
 https://medium.com/@TechTim42/elastic-search-and-open-search-a-brief-history-of-the-license-war-8f474743e2ff
 https://en.wikipedia.org/wiki/OpenSearch_(software)
 
-## Comparisons (to SQL as well?)
+## Comparisons (to SQL)
+
+![alt text](sqlComparison.png)
 
 ---
 ## Available clients (java, c#...)
@@ -153,3 +159,4 @@ https://medium.com/tech-explained/getting-hands-on-with-elasticsearch-9969a2894f
 https://www.elastic.co/guide/en/elasticsearch/reference/current/elasticsearch-intro-what-is-es.html
 https://www.elastic.co/customers/success-stories
 https://www.youtube.com/playlist?list=PL_mJOmq4zsHbcdoeAwNWuhEWwDARMMBta
+https://blog.avenuecode.com/elasticsearch
