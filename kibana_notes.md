@@ -34,4 +34,4 @@ most used app search analytics:
 |Querying|- Kibana Query Language (KQL) only filters <br> - Lucene is more powerful but is more complex to learn|Query Editor's syntax varies depending on the data source|
 |Functionality|Many visualization options|More customization options, editing is easier (e.g. collapsible rows)|
 |Alerting|Possible|Possible|
-|Community|Active open-source community|Active open-source community as well|
+|Community|[Active open-source community](https://github.com/elastic/kibana/graphs/commit-activity)|[Active open-source community](https://github.com/grafana/grafana/graphs/commit-activity) as well|
