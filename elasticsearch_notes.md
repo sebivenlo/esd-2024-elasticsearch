@@ -16,9 +16,22 @@ Rebranded to Elastic Stack in 2015, with additional tools - Kibana, Logstash and
 https://www.michael-wutzke.com/wp-content/uploads/2019/02/how-it-works-elastic-stack-beats-logstash-elasticsearch-kibana.png
 
 ## Visual use cases examples
+https://www.elastic.co/demo-gallery/ent-search
 
 ## Use cases
 Elasticsearch is used for a wide and growing range of use cases. Here are a few examples:
+
+- Application search
+- Web search
+- Enterprise search
+- Logging and log analytics
+    - Infrastructure metrics
+    - Container monitoring
+    - Geospartial data analysis and visualization (ex. Flights from - to)
+...
+
+
+
 
 ## Content Search Engine
 Elasticsearch doesn't use concepts as primary keys or relations, since it is a schema-free/less NoSQL JSON data storage. You might have noticed, I haven't used word dat abase anywhere. It also isn't ACID complaint, especially with multi-document transactions.
@@ -43,7 +56,19 @@ https://www.elastic.co/elasticon/conf/2018/sf/monitor-your-cloud-environment-wit
 GitHub - search feature. 2 billion documents. Analytics to reveal rogue users and software bugs by indexing all alerts, events, logs and tracking rate of specific code exceptions.
 https://www.elastic.co/customers/github
 
+## How does it work?
 
+Data can get inserted into Elasticsearch directly, or throught pipelines such as Logstash, which can manipulate the data to correct format for example, before is it processed by Elasticsearch.
+
+When data is inserted, it is parsed, normalized and tokenized before being saved into a Index. Tokens from tokenization get saved into "inverted-index" (the magic thing making Elasticsearch so fast).
+
+![Inverted Index](invertedIndex.png)
+
+Tokenization - input is split into individual terms/tokens. By default divides text on word boundaries and removes most punctuation symbols.
+"Hello ESD workshop!" -> "Hello", "ESD", "workshop"
+
+Normalization - input is converted to standard form. Lowercasing, removing punctuation, etc...
+"Hello", "ESD", "workshop" -> "hello", "esd", "workshop"
 
 
 ---
@@ -71,6 +96,8 @@ https://en.wikipedia.org/wiki/OpenSearch_(software)
 
 ---
 ## Available clients (java, c#...)
+Elasticsearch provides REST endpoints as the only form of interaction. Of course noone wants to manually put together HTTP request bodies, so Elastic provides client libraries for a few platforms: Java, JavaScript, Ruby, Go, .NET (C#), PHP, Perl, Python, Eland and Rust.
+With these libraries, users can build/send requests and receive responses in language native syntax.
 
 # Core concepts
 ## Documents
@@ -160,3 +187,4 @@ https://www.elastic.co/guide/en/elasticsearch/reference/current/elasticsearch-in
 https://www.elastic.co/customers/success-stories
 https://www.youtube.com/playlist?list=PL_mJOmq4zsHbcdoeAwNWuhEWwDARMMBta
 https://blog.avenuecode.com/elasticsearch
+https://medium.com/@sweetcodeyrs/the-secret-sauce-in-elasticsearch-the-inverted-index-7994daf48184
