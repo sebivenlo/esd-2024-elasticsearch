@@ -106,6 +106,28 @@ With these libraries, users can build/send requests and receive responses in lan
 
 # Core concepts
 ## Documents
+Elasticsearch document is a JSON object that contains the data for a single item in an index. Each document is stored in an index and has unique ID assigned (cluster wide). Structure of the document is defined by the index mapping, which specifies the data type for each field.
+
+
+Example of a document:
+
+```json
+{
+  "title": "The Great Gatsby",
+  "author": "F. Scott Fitzgerald",
+  "publication_date": "1925-04-10",
+  "isbn": "9780743273565",
+  "genre": "Classic",
+  "summary": "A novel about the American dream and the roaring twenties, centered around the mysterious Jay Gatsby and his unrequited love for Daisy Buchanan."
+}
+```
+- title: The title of the book, stored as a text field to allow for full-text search.
+- author: The author of the book, also stored as a text field.
+- publication_date: The date the book was published, stored as a date field.
+- isbn: The International Standard Book Number, stored as a keyword field for exact matches.
+- genre: The genre of the book, stored as a keyword field.
+- summary: A brief summary of the book, stored as a text field to allow for full-text search.
+
 
 ## What is an index (inverted index)
 Elasticsearch index holds a collection of documents, where each document is a collection of fields — which, in turn, are key-value pairs that contain your data. Think of an Elasticsearch cluster as a database that can contain many indices you can consider as a table, and within each index, you have many documents.
@@ -124,36 +146,115 @@ Explicit index
 - Manually configured fields BEFORE any data is saved in the index
 - Our choice for finer control
 
+
+Creating a index:
+```json
+PUT /books
+{
+  "mappings": {
+    "properties": {
+      "title": { "type": "text" },
+      "author": { "type": "text" },
+      "publication_date": { "type": "date" },
+      "isbn": { "type": "keyword" },
+      "genre": { "type": "keyword" },
+      "summary": { "type": "text" }
+    }
+  }
+}
+```
+
+Deleting a index:
+```json
+DELETE /books
+```
+
+Viewing index info:
+```json
+GET /books
+```
+
+Response:
+
+```json
+{
+  "books": {
+    "aliases": {},
+    "mappings": {
+      "properties": {
+        "author": {
+          "type": "text"
+        },
+        "genre": {
+          "type": "keyword"
+        },
+        "isbn": {
+          "type": "keyword"
+        },
+        "publication_date": {
+          "type": "date"
+        },
+        "summary": {
+          "type": "text"
+        },
+        "title": {
+          "type": "text"
+        }
+      }
+    },
+    "settings": {
+      "index": {
+        "routing": {
+          "allocation": {
+            "include": {
+              "_tier_preference": "data_content"
+            }
+          }
+        },
+        "number_of_shards": "1",
+        "provided_name": "books",
+        "creation_date": "1732301439820",
+        "number_of_replicas": "1",
+        "uuid": "-Q2MjnNoSeqOvJN6OyDMKw",
+        "version": {
+          "created": "8518000"
+        }
+      }
+    }
+  }
+}
+```
+
+Inserting a document:
+
+```json
+POST /books/_doc
+{
+  "title": "Elasticsearch: The Definitive Guide",
+  "author": "Clinton Gormley, Zachary Tong",
+  "publication_date": "2015-02-07",
+  "isbn": "978-1449358549",
+  "genre": "Technology",
+  "summary": "A comprehensive guide to Elasticsearch, covering everything from installation to advanced search techniques."
+}
+```
 ---
 
 # Nodes and clusters
+
+![Cluster](elasticsearch_cluster.png)
+
 ## Nodes
+An Elasticsearch node is a single instance of Elasticsearch running on a server. Each node stores data and participates in the cluster's indexing and search operations. Nodes can serve different roles: 
+- Master nodes manage the cluster's state and coordinate changes
+- Data nodes store the actual data and handle data-related operations
+- Coordinating nodes distribute client requests to the appropriate data nodes.
+
+This division of roles helps in managing the workload efficiently and ensures the smooth functioning of the cluster.
+
 ## Clusters
+An Elasticsearch cluster is a collection of nodes that work together to provide distributed search and analytics capabilities. The cluster is identified by a unique name and can scale horizontally by adding more nodes. Master nodes within the cluster ensure that data is evenly distributed and replicated across the nodes, maintaining the cluster's health and performance. This architecture allows Elasticsearch to handle large volumes of data, provide fault tolerance through data replication, and deliver high availability and efficient search performance.
 
----
-
-# Shards and Replicas
-## Shards
-## Eeplicas
-
----
-
-# Setting up
-## Installation steps
-## On premise vs cloud deployment
-## Basic config
-## Elasticseach.yml file from github
-https://github.com/elastic/elasticsearch/blob/main/distribution/src/config/elasticsearch.yml
-## Starting and stopping 
-
----
-
-# Indexing data (CRUD examples)
- https://www.elastic.co/en/blog/found-elasticsearch-from-the-bottom-up#building-indexes
-## Adding a document to db
-## Inverted index
-## Dictionary and postings
-## Tokens
 
 ---
 
@@ -174,9 +275,8 @@ https://github.com/elastic/elasticsearch/blob/main/distribution/src/config/elast
 ---
 
 # Performance optimization
-## Index strategies
+## Index strategies (Ngram or wildcard (explain Ngram or keyword tokenization))
 ## Query optimizing
-## Hardware considerations (can leave that out)
 
 # Monitoring and maintenance
 ## Monitoring tools
