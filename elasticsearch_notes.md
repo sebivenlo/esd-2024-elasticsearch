@@ -60,6 +60,8 @@ https://www.elastic.co/customers/github
 
 Data can get inserted into Elasticsearch directly, or throught pipelines such as Logstash, which can manipulate the data to correct format for example, before is it processed by Elasticsearch.
 
+![stack architecture](stack_architecture.png)
+
 When data is inserted, it is parsed, normalized and tokenized before being saved into a Index. 
 
 Tokenization - input is split into individual terms/tokens. By default divides text on word boundaries and removes most punctuation symbols.
@@ -260,10 +262,33 @@ An Elasticsearch cluster is a collection of nodes that work together to provide 
 
 # Searching data
 ## Search queries
-## Match, term and range queries
-## Advanced search
+Types of Search Queries: Search queries are instructions given to the search engine for users to find what they are looking for in Elasticsearch. Here are some common query types:
+
+Match Query: Used to retrieve documents that match a specific field with a specific value.
+Range Query: Used to retrieve documents within a specific field's specific value range.
+Bool Query: Used to create complex logical queries by combining multiple queries.
+Match Phrase Query: Used for exact phrase matching. It retrieves documents that contain the complete searched phrase.
+Aggregations: Used to group search results and obtain statistical data.
+
+## Advanced search (mixing seach query types)
 ## Filters
 ## Keyword vs full-text search
+## Ranking
+Ranking: Allows the organization of search results based on their importance to improve the quality of search outcomes.
+
+Relevance Ranking: Elasticsearch defaults to using a TF-IDF-based relevance ranking.
+Field-Based Ranking: This method allows ranking based on the value or score of a specific field.
+Time-Based Ranking: It is possible to rank documents based on a specific time interval or date.
+Custom Ranking: Elasticsearch enables users to create custom ranking strategies, allowing them to implement their own ranking logic.
+TF-IDF (Term Frequency — Inverse Document Frequency) is a statistical measure used to determine the mathematical importance of words within documents.
+
+- Term Frequency: The number of times a term appears in a document.
+
+- Document Frequency: log (Total Number of Documents / Number of Documents Containing the Term)
+
+Spell Correction: Elasticsearch can automatically correct misspelt or incorrectly written words in queries. Elasticsearch can correct spelling errors by using “fuzzy” queries. Fuzz queries return words similar to a specific word, helping to correct spelling mistakes.
+
+
 
 ---
 
@@ -309,3 +334,5 @@ https://www.elastic.co/customers/success-stories
 https://www.youtube.com/playlist?list=PL_mJOmq4zsHbcdoeAwNWuhEWwDARMMBta
 https://blog.avenuecode.com/elasticsearch
 https://medium.com/@sweetcodeyrs/the-secret-sauce-in-elasticsearch-the-inverted-index-7994daf48184
+https://towardsdev.com/elasticsearch-an-overview-of-structure-and-capabilities-45fe6cc0dd49
+
