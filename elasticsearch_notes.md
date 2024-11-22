@@ -60,9 +60,7 @@ https://www.elastic.co/customers/github
 
 Data can get inserted into Elasticsearch directly, or throught pipelines such as Logstash, which can manipulate the data to correct format for example, before is it processed by Elasticsearch.
 
-When data is inserted, it is parsed, normalized and tokenized before being saved into a Index. Tokens from tokenization get saved into "inverted-index" (the magic thing making Elasticsearch so fast).
-
-![Inverted Index](invertedIndex.png)
+When data is inserted, it is parsed, normalized and tokenized before being saved into a Index. 
 
 Tokenization - input is split into individual terms/tokens. By default divides text on word boundaries and removes most punctuation symbols.
 "Hello ESD workshop!" -> "Hello", "ESD", "workshop"
@@ -70,6 +68,9 @@ Tokenization - input is split into individual terms/tokens. By default divides t
 Normalization - input is converted to standard form. Lowercasing, removing punctuation, etc...
 "Hello", "ESD", "workshop" -> "hello", "esd", "workshop"
 
+Tokens from tokenization get saved into "inverted-index" (the magic thing making Elasticsearch so fast).
+
+![Inverted Index](invertedIndex.png)
 
 ---
 
@@ -92,7 +93,11 @@ https://en.wikipedia.org/wiki/OpenSearch_(software)
 
 ## Comparisons (to SQL)
 
-![alt text](sqlComparison.png)
+| Elasticsearch | RDBMS      |   |   |   |
+|---------------|------------|---|---|---|
+| Cluster       | Database   |   |   |   |
+| Index         | Table      |   |   |   |
+| Document      | Column/row |   |   |   |
 
 ---
 ## Available clients (java, c#...)
@@ -101,7 +106,23 @@ With these libraries, users can build/send requests and receive responses in lan
 
 # Core concepts
 ## Documents
+
 ## What is an index (inverted index)
+Elasticsearch index holds a collection of documents, where each document is a collection of fields — which, in turn, are key-value pairs that contain your data. Think of an Elasticsearch cluster as a database that can contain many indices you can consider as a table, and within each index, you have many documents.
+
+| Elasticsearch | RDBMS      |   |   |   |
+|---------------|------------|---|---|---|
+| Cluster       | Database   |   |   |   |
+| Index         | Table      |   |   |   |
+| Document      | Column/Row |   |   |   |
+
+Implicit index
+-  Dynamically mapped data types based on received data
+- Useful for quick start, but can be too basic for advanced use cases
+
+Explicit index
+- Manually configured fields BEFORE any data is saved in the index
+- Our choice for finer control
 
 ---
 
