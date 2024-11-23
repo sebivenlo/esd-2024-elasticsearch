@@ -265,10 +265,92 @@ An Elasticsearch cluster is a collection of nodes that work together to provide 
 Types of Search Queries: Search queries are instructions given to the search engine for users to find what they are looking for in Elasticsearch. Here are some common query types:
 
 Match Query: Used to retrieve documents that match a specific field with a specific value.
+```json
+
+GET /_search
+{
+  "query": {
+    "match": {
+      "name": {
+        "query": "Matej"
+      }
+    }
+  }
+}
+```
+https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-match-query.html
+
 Range Query: Used to retrieve documents within a specific field's specific value range.
+```json
+GET /_search
+{
+  "query": {
+    "range": {
+      "age": {
+        "gte": 15,
+        "lte": 30
+      }
+    }
+  }
+}
+```
+gte - greater or equal
+lte - less or equal
+https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-range-query.html
+
+
 Bool Query: Used to create complex logical queries by combining multiple queries.
+```json
+POST _search
+{
+  "query": {
+    "bool" : {
+      "must" : {
+        "term" : { "user.id" : "kimchy" }
+      },
+      "filter": {
+        "term" : { "tags" : "production" }
+      },
+      "must_not" : {
+        "range" : {
+          "age" : { "gte" : 10, "lte" : 20 }
+        }
+      },
+      "should" : [
+        { "term" : { "tags" : "env1" } },
+        { "term" : { "tags" : "deployed" } }
+      ],
+      "minimum_should_match" : 1
+    }
+  }
+}
+```
 Match Phrase Query: Used for exact phrase matching. It retrieves documents that contain the complete searched phrase.
-Aggregations: Used to group search results and obtain statistical data.
+- All the terms must appear in the field
+- They must have the same order as the input value
+- There must not be any intervening terms, i.e. be consecutive (potentially excluding stop-words but this can be complicated)
+```json
+{ "foo":"I just said hello world" }
+
+{ "foo":"Hello world" }
+
+{ "foo":"World Hello" }
+
+{ "foo":"Hello dear world" }
+```
+This match_phrase query will only return the first and second documents:
+
+```json
+{
+  "query": {
+    "match_phrase": {
+      "foo": "Hello World"
+    }
+  }
+}
+```
+
+https://stackoverflow.com/questions/26001002/elasticsearch-difference-between-term-match-phrase-and-query-string
 
 ## Advanced search (mixing seach query types)
 ## Filters
