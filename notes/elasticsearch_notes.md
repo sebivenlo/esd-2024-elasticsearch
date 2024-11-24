@@ -108,6 +108,22 @@ https://en.wikipedia.org/wiki/OpenSearch_(software)
 Elasticsearch provides REST endpoints as the only form of interaction. Of course noone wants to manually put together HTTP request bodies, so Elastic provides client libraries for a few platforms: Java, JavaScript, Ruby, Go, .NET (C#), PHP, Perl, Python, Eland and Rust.
 With these libraries, users can build/send requests and receive responses in language native syntax.
 
+```java
+String searchText = "bike";
+
+SearchResponse<Product> response = esClient.search(s -> s
+    .index("products") 
+    .query(q -> q      
+        .match(t -> t   
+            .field("name")  
+            .query(searchText)
+        )
+    ),
+    Product.class      
+);
+
+```
+
 # Core concepts
 ## Documents
 Elasticsearch document is a JSON object that contains the data for a single item in an index. Each document is stored in an index and has unique ID assigned (cluster wide). Structure of the document is defined by the index mapping, which specifies the data type for each field.
@@ -141,6 +157,14 @@ Elasticsearch index holds a collection of documents, where each document is a co
 | Cluster       | Database   |   |   |   |
 | Index         | Table      |   |   |   |
 | Document      | Column/Row |   |   |   |
+
+Types:
+- Common:
+
+binary, boolean, keywords, numbers, dates, alias
+
+- Object and relational types:
+object, flattened, nested, join, passthrough,
 
 Implicit index
 -  Dynamically mapped data types based on received data
@@ -377,8 +401,22 @@ Spell Correction: Elasticsearch can automatically correct misspelt or incorrectl
 
 ---
 # Performance optimization
-## Index strategies (Ngram or wildcard (explain Ngram or keyword tokenization))
 ## Query optimizing
+- Use Filters for Non-Scoring Queries: Filters are faster than queries because they do not calculate relevance scores. Use filters for static data or when scoring is not required.
+- Caching: Utilize Elasticsearch's query cache and request cache to speed up repeated queries. Ensure that frequently accessed data is cached. (Indices can be assigned to hot or cold cache based on frequency/importancy of use)
+
+
+## Index strategies (Ngram or wildcard (explain Ngram or keyword tokenization))
+- N-grams/Edge N-grams: Use n-grams for efficient partial matching. Specific index fields need to be explicitly configured as N-grams.
+ N-grams break down text into smaller chunks, allowing for faster searches on partial terms. ("matej" into "m", "ma", "mat", "mate", "matej"). This of course increases storage size of the index using N-grams, but is still fast to search as most of the compute intesive work is done while indexing.
+- Keywords with Wildcards: Use wildcard (*) for pattern matching within strings. Specific index fields need to be explicitly configured as KEYWORD or WILDCARD type.
+Using wildcards allows pattern matching searched query to existing index documents. The difference from N-grams is that the wildcard pattern matching is done during runtime and is more compute intensive based on how large is the searched index, amount of wildcards used and their position in search query.
+
+So basically these two example strategies make you balance time and space complexity. It's up to the specific use case to decide, which strategy to choose.
+
+
+
+
 
 ---
 
