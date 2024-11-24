@@ -27,7 +27,7 @@ most used app search analytics:
 
 |Comparison point|Kibana|Grafana|
 |-|-|-|
-|Purpose|Monitoring resources (CPU, disk, memory, network usage)|Monitoring logs, full-text querying
+|Purpose|Monitoring resources (CPU, disk, memory, network usage), full-text querying with ELK stack |Monitoring logs, full-text querying
 |Data Sources|Elasticsearch only|optimal for time-series data (e.g. InfluxDB), PostgreSQL, Elasticsearch and more using plugins|
 |License|Closed-source beyond version 7.9|Free and open-source (FOSS/OSS)|
 |Access Control|Access control is behind paywall|Has built-in user control|
