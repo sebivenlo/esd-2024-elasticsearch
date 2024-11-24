@@ -60,7 +60,7 @@ https://www.elastic.co/customers/github
 
 Data can get inserted into Elasticsearch directly, or throught pipelines such as Logstash, which can manipulate the data to correct format for example, before is it processed by Elasticsearch.
 
-![stack architecture](stack_architecture.png)
+![stack architecture](../imgs/stack_architecture.png)
 
 When data is inserted, it is parsed, normalized and tokenized before being saved into a Index. 
 
@@ -72,7 +72,9 @@ Normalization - input is converted to standard form. Lowercasing, removing punct
 
 Tokens from tokenization get saved into "inverted-index" (the magic thing making Elasticsearch so fast).
 
-![Inverted Index](invertedIndex.png)
+![Inverted Index](../imgs/invertedIndex.png)
+
+![Anatomy of Analyzer](../imgs/anatomy_of_analyzer.png)
 
 ---
 
@@ -95,14 +97,14 @@ https://en.wikipedia.org/wiki/OpenSearch_(software)
 
 ## Comparisons (to SQL)
 
-| Elasticsearch | RDBMS      |   |   |   |
-|---------------|------------|---|---|---|
-| Cluster       | Database   |   |   |   |
-| Index         | Table      |   |   |   |
-| Document      | Column/row |   |   |   |
+| Elasticsearch | RDBMS      |
+|---------------|------------|
+| Cluster       | Database   |
+| Index         | Table      |
+| Document      | Column/row |
 
 ---
-## Available clients (java, c#...)
+## Available clients (Java, C#...)
 Elasticsearch provides REST endpoints as the only form of interaction. Of course noone wants to manually put together HTTP request bodies, so Elastic provides client libraries for a few platforms: Java, JavaScript, Ruby, Go, .NET (C#), PHP, Perl, Python, Eland and Rust.
 With these libraries, users can build/send requests and receive responses in language native syntax.
 
@@ -244,7 +246,7 @@ POST /books/_doc
 
 # Nodes and clusters
 
-![Cluster](elasticsearch_cluster.png)
+![Cluster](../imgs/elasticsearch_cluster.png)
 
 ## Nodes
 An Elasticsearch node is a single instance of Elasticsearch running on a server. Each node stores data and participates in the cluster's indexing and search operations. Nodes can serve different roles: 
@@ -357,6 +359,7 @@ https://stackoverflow.com/questions/26001002/elasticsearch-difference-between-te
 ## Keyword vs full-text search
 ## Ranking
 Ranking: Allows the organization of search results based on their importance to improve the quality of search outcomes.
+Instead of asking "Is this document relevant?" Elasticsearch asks "How relevant is this document?"
 
 Relevance Ranking: Elasticsearch defaults to using a TF-IDF-based relevance ranking.
 Field-Based Ranking: This method allows ranking based on the value or score of a specific field.
@@ -364,13 +367,18 @@ Time-Based Ranking: It is possible to rank documents based on a specific time in
 Custom Ranking: Elasticsearch enables users to create custom ranking strategies, allowing them to implement their own ranking logic.
 TF-IDF (Term Frequency — Inverse Document Frequency) is a statistical measure used to determine the mathematical importance of words within documents.
 
-- Term Frequency: The number of times a term appears in a document.
+- Term Frequency: The number of times a term appears in a document. (Like CTRL + F / CMD + F)
 
-- Document Frequency: log (Total Number of Documents / Number of Documents Containing the Term)
+- Inverse Document Frequency: looks across multiple documents within Elasticsearch and tells us that if a term appears too frequently, then there’s a higher probability it’s not as relevant.
+For instance, if we refer to the index of a book, there are particular terms excluded. Terms like "the", “and,”, “of,” are not included within the index. Those terms appear so many times they lose relevance.
+
 
 Spell Correction: Elasticsearch can automatically correct misspelt or incorrectly written words in queries. Elasticsearch can correct spelling errors by using “fuzzy” queries. Fuzz queries return words similar to a specific word, helping to correct spelling mistakes.
 
-
+---
+# Performance optimization
+## Index strategies (Ngram or wildcard (explain Ngram or keyword tokenization))
+## Query optimizing
 
 ---
 
@@ -380,10 +388,6 @@ Spell Correction: Elasticsearch can automatically correct misspelt or incorrectl
 ## Building dashboards
 
 ---
-
-# Performance optimization
-## Index strategies (Ngram or wildcard (explain Ngram or keyword tokenization))
-## Query optimizing
 
 # Monitoring and maintenance
 ## Monitoring tools
@@ -417,4 +421,5 @@ https://www.youtube.com/playlist?list=PL_mJOmq4zsHbcdoeAwNWuhEWwDARMMBta
 https://blog.avenuecode.com/elasticsearch
 https://medium.com/@sweetcodeyrs/the-secret-sauce-in-elasticsearch-the-inverted-index-7994daf48184
 https://towardsdev.com/elasticsearch-an-overview-of-structure-and-capabilities-45fe6cc0dd49
+https://levelup.gitconnected.com/the-beginners-guide-to-search-relevance-with-elasticsearch-e7ee61f0695f
 
