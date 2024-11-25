@@ -28,10 +28,11 @@ ESD Fall 2024
 ---
 
 ![bg left height:7in](../imgs/elastic_logo.jpg)
- - What is Elasticsearch + Elastic Stack
+- What is Elasticsearch + Elastic Stack
+- History
 - Use Cases
-- How does it work?
 - Alternatives
+- How does it work?
 - Clients
 - Core concepts
 - Searching
@@ -136,25 +137,97 @@ table {
 
 ---
 
-## Core concepts
+# Comparisons (to SQL)
+
+| Elasticsearch | RDBMS      |
+|---------------|------------|
+| Cluster       | Database   |
+| Index         | Table      |
+| Document      | Column/row |
+
+---
+
+# How does it work?
+
+Data can be inserted into Elasticsearch through:
+- Elasticsearch document insert REST API (directly into Elasticsearch)
+- Custom pipelines (Custom data transformation before indexing)
+- Logstash
+    - Provides input, filter, and output plugins for collecting, enriching, and transforming data from a variety of sources.
+    - Large footprint.
+- Beats
+    - Lightweight data shippers that you install as agents on your servers to send specific types of operational data to Elasticsearch.
+    - Small footprint.
+
+---
+# ELK Stack architecture
+![height:5in](../imgs/stack_architecture.png)
+
+---
+
+# How does it work?
+
+Before data is saved to an Index, it is parsed, normalized and tokenized
+
+- Tokenization - input is split into individual terms/tokens. By default divides text on word boundaries and removes most punctuation symbols.
+    - "Hello ESD workshop!" -> "Hello", "ESD", "workshop"
+
+- Normalization - input is converted to standard form. Lowercasing, removing punctuation, etc...
+    - "Hello", "ESD", "workshop" -> "hello", "esd", "workshop"
+
+Tokens from tokenization get saved into "inverted-index" (the magic thing making Elasticsearch so fast).
+
+---
+
+# Inverted Index
+![height:5in](../imgs/invertedIndex.png)
+
+---
+
+# Anatomy of Analyzer/Tokenizer
+![height:5in](../imgs/anatomy_of_analyzer.png)
+
+---
+
+# Available clients
+Using clients lets you use language native syntax to build queries instead of manually crafting HTTP request bodies and specifying endpoints.
+
+- Java
+- JavaScript
+- Ruby
+- Go
+- .NET (C#)
+- PHP
+- Perl
+- Python
+- Eland
+- Rust
+
+---
+
+# Core concepts
 - documents
 - what is an index (inverted index)
 
 ---
 
-## Nodes and clusters
+
+
+---
+
+# Nodes and clusters
 - nodes
 - clusters
 
 ---
 
-## Shards and Replicas
+# Shards and Replicas
 - shards
 - replicas
 
 ---
 
-## Setting up
+# Setting up
 - installation steps
 - on premise vs cloud deployment
 - basic config
@@ -164,7 +237,7 @@ https://github.com/elastic/elasticsearch/blob/main/distribution/src/config/elast
 
 ---
 
-## Indexing data
+# Indexing data
 - https://www.elastic.co/en/blog/found-elasticsearch-from-the-bottom-up#building-indexes
 - adding a document to db
 - inverted index
@@ -173,7 +246,7 @@ https://github.com/elastic/elasticsearch/blob/main/distribution/src/config/elast
 
 ---
 
-## Searching data
+# Searching data
 - search queries
 - match, term and range queries
 - advanced search
@@ -182,26 +255,26 @@ https://github.com/elastic/elasticsearch/blob/main/distribution/src/config/elast
 
 ---
 
-## Kibana
+# Kibana
 - creating visualizations
 - bar / pie charts, line graphs
 - building dashboards
 
 ---
 
-## performance optimization
+# performance optimization
 - index strategies
 - query optimizing
 - hardware considerations (can leave that out)
 
-## monitoring and maintenance
+# monitoring and maintenance
 - monitoring tools
 - Kibana
 - APIs
 - backup and restore
 - scaling
 
-## demo
+# demo
 - basic operations
 - indexing a doc
 - running query
