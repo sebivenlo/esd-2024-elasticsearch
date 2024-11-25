@@ -205,44 +205,227 @@ Using clients lets you use language native syntax to build queries instead of ma
 
 ---
 
-# Core concepts
-- documents
-- what is an index (inverted index)
+# Java client example
+
+```java
+String searchText = "bike";
+
+SearchResponse<Product> response = esClient.search(s -> s
+    .index("products") 
+    .query(q -> q      
+        .match(t -> t   
+            .field("name")  
+            .query(searchText)
+        )
+    ),
+    Product.class      
+);
+
+```
 
 ---
 
+#  <!--fit-->Core concepts
+
+---
+
+# Document
+- JSON object containing saved data for single object
+- Stored in a specific index with unique ID
+- Collection of fields — which, in turn, are key-value pairs that contain your data
+- Structure defined by index mapping (specifies the data type for each field)
 
 
 ---
 
+# Example of a document:
+
+```json
+{
+  "title": "The Great Gatsby",
+  "author": "F. Scott Fitzgerald",
+  "publication_date": "1925-04-10",
+  "isbn": "9780743273565",
+  "genre": "Classic",
+  "summary": "A novel about the American dream and the roaring twenties, centered around the mysterious Jay Gatsby..."
+}
+```
+
+---
+
+# Index
+
+- Holds a collection of documents.
+- Implicit index
+    -  Dynamically mapped data types based on received data
+    - Useful for quick start, but can be too basic for advanced use cases
+- Explicit index
+    - Manually configured fields BEFORE any data is saved in the index
+    - Our choice for finer control
+- Most commonly used data types:
+    - Boolean, keywords, numbers, dates, text, ...
+
+---
+
+# Creating an index
+
+```json
+PUT /books
+{
+  "mappings": {
+    "properties": {
+      "title": { "type": "text" },
+      "author": { "type": "text" },
+      "publication_date": { "type": "date" },
+      "isbn": { "type": "keyword" },
+      "genre": { "type": "keyword" },
+      "summary": { "type": "text" }
+    }
+  }
+}
+```
+
+---
+
+# Creating an index
+
+- title: The title of the book, stored as a text field to allow for full-text search.
+- author: The author of the book, also stored as a text field.
+- publication_date: The date the book was published, stored as a date field.
+- isbn: The International Standard Book Number, stored as a keyword field for exact matches.
+- genre: The genre of the book, stored as a keyword field.
+- summary: A brief summary of the book, stored as a text field to allow for full-text search.
+
+---
+
+# Deleting index
+
+```json
+DELETE /books
+```
+
+```json
+{
+  "acknowledged": true
+}
+```
+
+---
+# Inspecting index
+
+```json
+GET /books
+```
+
+```json
+{
+  "books": {
+    "aliases": {},
+    "mappings": {
+      "properties": {
+        "author": {
+          "type": "text"
+        },
+        "genre": {
+          "type": "keyword"
+        },
+        "isbn": {
+          "type": "keyword"
+        },
+        "publication_date": {
+          "type": "date"
+        },
+        "summary": {
+          "type": "text"
+        },
+        "title": {
+          "type": "text"
+        }
+      }
+    },
+    "settings": {
+      "index": {
+        "routing": {
+          "allocation": {
+            "include": {
+              "_tier_preference": "data_content"
+            }
+          }
+        },
+        "number_of_shards": "1",
+        "provided_name": "books",
+        "creation_date": "1732301439820",
+        "number_of_replicas": "1",
+        "uuid": "-Q2MjnNoSeqOvJN6OyDMKw",
+        "version": {
+          "created": "8518000"
+        }
+      }
+    }
+  }
+}
+```
+
+---
+
+# Inserting a document
+
+```json
+POST /books/_doc
+{
+  "title": "Elasticsearch: The Definitive Guide",
+  "author": "Clinton Gormley, Zachary Tong",
+  "publication_date": "2015-02-07",
+  "isbn": "978-1449358549",
+  "genre": "Technology",
+  "summary": "A comprehensive guide to Elasticsearch, covering everything from installation to advanced search techniques."
+}
+```
+
+```json
+{
+  "_index": "books",
+  "_id": "xqetZZMBgQCG7FfPBUqv",
+  "_version": 1,
+  "result": "created",
+  "_shards": {
+    "total": 2,
+    "successful": 1,
+    "failed": 0
+  },
+  "_seq_no": 0,
+  "_primary_term": 1
+}
+```
+
+---
 # Nodes and clusters
-- nodes
-- clusters
+
+![height:6in](../imgs/elasticsearch_cluster.png)
 
 ---
 
-# Shards and Replicas
-- shards
-- replicas
+# Node
+
+An Elasticsearch node is a single instance of Elasticsearch running on a server. Each node stores data and participates in the cluster's indexing and search operations. Nodes can serve different roles: 
+- Master nodes manage the cluster's state and coordinate even distribution and replication of data across nodes, ensuring cluster's health and performance
+- Data nodes store the actual data and handle data-related operations
+- Coordinating nodes distribute client requests to the appropriate data nodes
+
+This division of roles helps in managing the workload efficiently and ensures the smooth functioning of the cluster.
 
 ---
 
-# Setting up
-- installation steps
-- on premise vs cloud deployment
-- basic config
-- Elasticseach.yml file from github
-https://github.com/elastic/elasticsearch/blob/main/distribution/src/config/elasticsearch.yml
-- starting and stopping 
+# Cluster
 
----
+An Elasticsearch cluster is a collection of nodes that work together to provide distributed search and analytics capabilties.
+- Unique name
+- Horizontal scaling (adding more nodes to the cluster)
 
-# Indexing data
-- https://www.elastic.co/en/blog/found-elasticsearch-from-the-bottom-up#building-indexes
-- adding a document to db
-- inverted index
-- dictionary and postings
-- tokens
+This architecture allows:
+- Handling large volume of data
+- Provides fault tolerance through data replication
+- Delivers high availability and efficient search performance
 
 ---
 

@@ -141,16 +141,10 @@ Example of a document:
   "summary": "A novel about the American dream and the roaring twenties, centered around the mysterious Jay Gatsby and his unrequited love for Daisy Buchanan."
 }
 ```
-- title: The title of the book, stored as a text field to allow for full-text search.
-- author: The author of the book, also stored as a text field.
-- publication_date: The date the book was published, stored as a date field.
-- isbn: The International Standard Book Number, stored as a keyword field for exact matches.
-- genre: The genre of the book, stored as a keyword field.
-- summary: A brief summary of the book, stored as a text field to allow for full-text search.
 
 
 ## What is an index (inverted index)
-Elasticsearch index holds a collection of documents, where each document is a collection of fields — which, in turn, are key-value pairs that contain your data. Think of an Elasticsearch cluster as a database that can contain many indices you can consider as a table, and within each index, you have many documents.
+Elasticsearch index holds a collection of documents. Think of an Elasticsearch cluster as a database that can contain many indices you can consider as a table, and within each index, you have many documents.
 
 | Elasticsearch | RDBMS      |   |   |   |
 |---------------|------------|---|---|---|
@@ -191,6 +185,12 @@ PUT /books
   }
 }
 ```
+- title: The title of the book, stored as a text field to allow for full-text search.
+- author: The author of the book, also stored as a text field.
+- publication_date: The date the book was published, stored as a date field.
+- isbn: The International Standard Book Number, stored as a keyword field for exact matches.
+- genre: The genre of the book, stored as a keyword field.
+- summary: A brief summary of the book, stored as a text field to allow for full-text search.
 
 Deleting a index:
 ```json
@@ -282,7 +282,6 @@ This division of roles helps in managing the workload efficiently and ensures th
 
 ## Clusters
 An Elasticsearch cluster is a collection of nodes that work together to provide distributed search and analytics capabilities. The cluster is identified by a unique name and can scale horizontally by adding more nodes. Master nodes within the cluster ensure that data is evenly distributed and replicated across the nodes, maintaining the cluster's health and performance. This architecture allows Elasticsearch to handle large volumes of data, provide fault tolerance through data replication, and deliver high availability and efficient search performance.
-
 
 ---
 
