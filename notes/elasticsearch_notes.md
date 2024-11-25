@@ -24,7 +24,7 @@ Elasticsearch is used for a wide and growing range of use cases. Here are a few 
 - Application search
 - Web search
 - Enterprise search
-- Logging and log analytics
+- Logging and log/data analytics
     - Infrastructure metrics
     - Container monitoring
     - Geospartial data analysis and visualization (ex. Flights from - to)
@@ -434,4 +434,4 @@ https://blog.avenuecode.com/elasticsearch
 https://medium.com/@sweetcodeyrs/the-secret-sauce-in-elasticsearch-the-inverted-index-7994daf48184
 https://towardsdev.com/elasticsearch-an-overview-of-structure-and-capabilities-45fe6cc0dd49
 https://levelup.gitconnected.com/the-beginners-guide-to-search-relevance-with-elasticsearch-e7ee61f0695f
-
+https://uptrace.dev/blog/elasticsearch-vs-splunk.html
