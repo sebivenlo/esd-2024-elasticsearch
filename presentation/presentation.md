@@ -1,8 +1,24 @@
 ---
 marp: true
+class: invert
 ---
 
 <!-- paginate: true -->
+
+![bg left height:6in](../imgs/this_repo.png)
+https://github.com/sebivenlo/esd-2024-elasticsearch
+
+---
+
+![bg left height:6in](../imgs/elk_image.png)
+
+```
+docker compose up setup
+```
+```
+docker compose up
+```
+---
 
 # <!--fit-->Elasticsearch + Kibana
 Matej Kopecky, Leonie Böger
