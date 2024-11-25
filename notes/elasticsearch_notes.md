@@ -4,7 +4,6 @@
 Elasticsearch is an open-source search and analytics engine that allows for quick, scalable, and efficient searching, analyzing, and storing of large volumes of data without noticeable performance impact.
 
 It's built on Apache Lucene (search engine library written in Java!) and provides a distributed, multitenant-capable (mode of operation of software where multiple independent instances of one or multiple applications operate in a shared environment) full-text search engine with an HTTP RESTful interface and schema-free JSON documents.
-Elasticsearch is widely used for log and event data analysis, real-time application monitoring, and search functionalities across various types of documents.
 https://www.elastic.co/guide/en/elasticsearch/reference/current/elasticsearch-intro-what-is-es.html
 https://sue.nl/wp-content/uploads/sites/8/2022/07/elastic-logo-920x920-sue-v02.png
 
@@ -19,6 +18,7 @@ https://www.michael-wutzke.com/wp-content/uploads/2019/02/how-it-works-elastic-s
 https://www.elastic.co/demo-gallery/ent-search
 
 ## Use cases
+Elasticsearch is widely used for log and event data analysis, real-time application monitoring, and search functionalities across various types of documents.
 Elasticsearch is used for a wide and growing range of use cases. Here are a few examples:
 
 - Application search
@@ -413,32 +413,6 @@ Spell Correction: Elasticsearch can automatically correct misspelt or incorrectl
 Using wildcards allows pattern matching searched query to existing index documents. The difference from N-grams is that the wildcard pattern matching is done during runtime and is more compute intensive based on how large is the searched index, amount of wildcards used and their position in search query.
 
 So basically these two example strategies make you balance time and space complexity. It's up to the specific use case to decide, which strategy to choose.
-
-
-
-
-
----
-
-# Kibana
-## Creating visualizations
-## Bar / pie charts, line graphs
-## Building dashboards
-
----
-
-# Monitoring and maintenance
-## Monitoring tools
-## Kibana
-## APIs
-## Backup and restore
-## Scaling
-
-# Demo
-## Basic operations
-## Indexing a doc
-## Running query
-## Visualization with kabana
 
 # Assignment
 - ??
