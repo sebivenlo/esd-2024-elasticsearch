@@ -9,6 +9,8 @@ Kibana server communicates with Elasticsearch cluster.
 - Create interactive dashboards combining multiple visualizations
 - Customizable layouts
 - Using charts, graphs, heatmaps, histograms, maps
+![Kibana Discover](../imgs/kibana_map.png)
+
 
 ## Data Exploration
 - Explore unfiltered data from indices by using Discover  
@@ -27,7 +29,7 @@ Kibana server communicates with Elasticsearch cluster.
 
 ## Alerting
 - Define real-time alerts for custom conditions sent via email and more
-- Generate PDF / PNG / CSV reports of dashboards (scheduled)
+- Generate PDF / PNG / CSV reports of dashboards (behind paywall)
 
 ## Machine Learning Integration
 - Discover anomalies by using the built-in machine learning jobs
@@ -38,11 +40,12 @@ Kibana server communicates with Elasticsearch cluster.
 ## Security
 - Role-based access control
     - restrict access to data, dashboards, visualizations per user
+    - Single Sign-on (behind paywall)
 - Track user activities for security compliance
 
 ## Data Sources
 - Elasticsearch only
-- Logstash (part of the Elastic ELK stack) can import data to Elasticsearch
+    - Logstash (part of the Elastic stack) can import data to Elasticsearch
 
 ## Querying Languages
 - Kibana Query Language
@@ -56,13 +59,17 @@ Kibana server communicates with Elasticsearch cluster.
 
 ## Comparison to [Grafana](https://logz.io/blog/grafana-vs-kibana/)
 
-|Comparison point|<img src="../imgs/elastic-kibana_logo.svg" alt="Kibana logo" width="80"/>Kibana|Grafana|
+|Comparison point|<img src="../imgs/elastic-kibana_logo.svg" alt="Kibana logo" width="80"/>Kibana|<img src="../imgs/grafana_logo.svg" alt="Kibana logo" width="70"/>Grafana|
 |-|-|-|
 |Purpose|Monitoring resources (CPU, disk, memory, network usage), full-text querying with ELK stack |Monitoring logs, full-text querying
 |Data Sources|Elasticsearch only|optimal for time-series data (e.g. InfluxDB), PostgreSQL, Elasticsearch and more using plugins|
-|License|Closed-source beyond version 7.9|Free and open-source (FOSS/OSS)|
-|Access Control|Access control is behind paywall|Has built-in user control|
+|License|Closed-source beyond version 7.9<br> Has paid-only functionalities (Single sign-on, Machine learning assistance, PDF and PNG reports, ... )|Free and open-source|
 |Querying|- Kibana Query Language (KQL) only filters <br> - Lucene is more powerful but is more complex to learn|Query Editor's syntax varies depending on the data source|
 |Functionality|Many visualization options|More customization options, editing is easier (e.g. collapsible rows)|
 |Alerting|Possible|Possible|
 |Community|[Active open-source community](https://github.com/elastic/kibana/graphs/commit-activity)|[Active open-source community](https://github.com/grafana/grafana/graphs/commit-activity) as well|
+
+
+## Image Sources:
+Grafana Logo: https://commons.wikimedia.org/wiki/File:Grafana_icon.svg <br>
+Kibana Logo: https://worldvectorlogo.com/es/logo/elastic-kibana
