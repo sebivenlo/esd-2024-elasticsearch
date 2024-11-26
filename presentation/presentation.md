@@ -596,14 +596,83 @@ So basically these two example strategies make you consider and balance time and
 
 ---
 
-# Kibana
-- creating visualizations
-- bar / pie charts, line graphs
-- building dashboards
+# Kibana 
+![bg left height:6in](../imgs/elastic-kibana_logo.svg)
+- What is it
+- Data Capabilities
+  - Explore
+  - Visualize
+  - Monitor
+  - Search Analytics
+- Machine Learning
+- Querying Languages
+- Monitor the Elastic Stack
+- Security
+- Comparison to Grafana
+---
+
+# Kibana Key Functions
+
+- Browser UI for visualizing and analyzing Elasticsearch data
+- Configuring the Elastic stack 
 
 ---
 
-# performance optimization
+## Data Exploration with Discover
+![Kibana Discover](../imgs/kibana_discover.png)
+
+---
+
+## Visualizing Data with Dashboards
+![Kibana Dashboard eCommerce](../imgs/kibana_dashboard_ecommerce.png)
+
+---
+
+- Create interactive dashboards combining multiple visualizations
+- Customizable layouts
+- Using charts, graphs, heatmaps, histograms, maps
+![Kibana Discover](../imgs/kibana_map.png)
+---
+
+
+# Kibana Observe
+
+- Monitor time-series data in real-time
+- Monitor and apply analytics in real-time
+
+---
+# Search Analytics
+- Click analytics in apps / webpages
+- Query analytics
+    - most frequent search terms and their results
+    - top searches with no result
+---
+
+# Configuring the Elastic stack
+
+- Manage permissions 
+  - Role-based access
+  - Single Sign-on
+- Tracking user activity
+---
+<style scoped>
+table {
+  font-size: 18px;
+}
+</style>
+
+||![height:0.5in](../imgs/elastic-kibana_logo.svg) Kibana|![height:0.5in](../imgs/grafana_logo.svg) Grafana|
+|-|-|-|
+|Purpose|Monitoring logs, Analyzing data |Monitoring resources (CPU, disk, memory, network usage)
+|Data Sources|Elasticsearch only|optimal for time-series data from InfluxDB, PostgreSQL, Elasticsearch, ... |
+|License|Closed-source beyond version 7.9<br> Has paid-only functionalities (Single sign-on, Machine learning assistance, PDF and PNG reports, ... )|Free and open-source|
+|Querying|- Kibana Query Language (KQL) only filters <br> - Lucene is more powerful but is more complex to learn|Query Editor's syntax varies depending on the data source|
+|Functionality|Many visualization options|More customization options, editing is easier (e.g. collapsible rows)|
+|Community|[Active open-source community](https://github.com/elastic/kibana/graphs/commit-activity)|[Active open-source community](https://github.com/grafana/grafana/graphs/commit-activity) as well|
+
+---
+<!-- 
+# Performance optimization
 - index strategies
 - query optimizing
 - hardware considerations (can leave that out)
@@ -620,7 +689,7 @@ So basically these two example strategies make you consider and balance time and
 - indexing a doc
 - running query
 - visualization with kabana
-
+-->
 ## assignment
 - ??
 
