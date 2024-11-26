@@ -624,3 +624,36 @@ So basically these two example strategies make you consider and balance time and
 ## assignment
 - ??
 
+---
+
+# Sources
+https://www.elastic.co/guide/en/elasticsearch/reference/current/elasticsearch-intro-what-is-es.html
+https://www.elastic.co/customers/success-stories
+https://www.youtube.com/playlist?list=PL_mJOmq4zsHbcdoeAwNWuhEWwDARMMBta
+https://blog.avenuecode.com/elasticsearch
+https://medium.com/@sweetcodeyrs/the-secret-sauce-in-elasticsearch-the-inverted-index-7994daf48184
+https://towardsdev.com/elasticsearch-an-overview-of-structure-and-capabilities-45fe6cc0dd49
+https://levelup.gitconnected.com/the-beginners-guide-to-search-relevance-with-elasticsearch-e7ee61f0695f
+https://uptrace.dev/blog/elasticsearch-vs-splunk.html
+https://medium.com/tech-explained/elasticsearch-explained-411e300413c7
+https://medium.com/tech-explained/4-steps-to-setting-up-the-perfect-elasticsearch-test-environment-7d7ccf4bdeb9
+https://medium.com/tech-explained/getting-hands-on-with-elasticsearch-9969a2894f8a
+https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-range-query.html
+https://stackoverflow.com/questions/26001002/elasticsearch-difference-between-term-match-phrase-and-query-string
+https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-match-query.html
+https://medium.com/@TechTim42/elastic-search-and-open-search-a-brief-history-of-the-license-war-8f474743e2ff
+https://en.wikipedia.org/wiki/OpenSearch_(software)
+https://www.elastic.co/customers/github
+https://www.elastic.co/elasticon/conf/2018/sf/monitor-your-cloud-environment-with-the-logstash-azure-monitoring-module
+https://www.elastic.co/customers/airbus
+https://www.elastic.co/elasticon/tour/2017/munich/distributed-logging-and-monitoring-at-volkswagen-using-the-elastic-stack
+https://www.elastic.co/demo-gallery/ent-search
+
+
+
+
+
+
+
+---
+
