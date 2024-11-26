@@ -28,18 +28,17 @@ ESD Fall 2024
 ---
 
 ![bg left height:7in](../imgs/elastic_logo.jpg)
-- What is Elasticsearch + Elastic Stack
-- History
-- Use Cases
-- Alternatives
-- How does it work?
-- Clients
-- Core concepts
-- Searching
-- Performance optimization
+- Elasticsearch + Elastic Stack
+  - History
+  - Use Cases
+  - How does it work?
+  - Core concepts
+  - Searching
+  - Performance optimization
 
-## TODO: LEONIE CONTENT
-- Kibana
+- Kibana key functions
+  - Kibana and the Elastic stack
+  - Comparison to competitor(?)
 
 
 
@@ -593,16 +592,12 @@ So basically these two example strategies make you consider and balance time and
 
 # Kibana 
 ![bg left height:6in](../imgs/elastic-kibana_logo.svg)
-- What is it
-- Data Capabilities
+- Key Functions
   - Explore
   - Visualize
-  - Monitor
+  - Observe
   - Search Analytics
-- Machine Learning
-- Querying Languages
 - Monitor the Elastic Stack
-- Security
 - Comparison to Grafana
 ---
 
