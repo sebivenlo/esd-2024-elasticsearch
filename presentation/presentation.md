@@ -653,11 +653,12 @@ table {
 
 ||![height:0.5in](../imgs/elastic-kibana_logo.svg) Kibana|![height:0.5in](../imgs/grafana_logo.svg) Grafana|
 |-|-|-|
-|Purpose|Monitoring logs, Analyzing data |Monitoring resources (CPU, disk, memory, network usage)
+|Purpose|Monitoring logs, Analyzing data |Monitoring resources (CPU, disk, memory, network usage), can't query text
 |Data Sources|Elasticsearch only|optimal for time-series data from InfluxDB, PostgreSQL, Elasticsearch, ... |
 |License|Closed-source beyond version 7.9<br> Has paid-only functionalities (Single sign-on, Machine learning assistance, PDF and PNG reports, ... )|Free and open-source|
 |Querying|- Kibana Query Language (KQL) only filters <br> - Lucene is more powerful but is more complex to learn|Query Editor's syntax varies depending on the data source|
 |Functionality|Many visualization options|More customization options, editing is easier (e.g. collapsible rows)|
+|Alerting|Possible|Wider range of alert notifiers|
 |Community|[Active open-source community](https://github.com/elastic/kibana/graphs/commit-activity)|[Active open-source community](https://github.com/grafana/grafana/graphs/commit-activity) as well|
 
 ---
@@ -680,8 +681,13 @@ table {
 - running query
 - visualization with kabana
 -->
-## assignment
-- ??
+## Assignment
+
+![bg left height:3in](../imgs/this_repo.png)
+https://github.com/sebivenlo/esd-2024-elasticsearch
+
+![bg left height:3in](../imgs/elk_image.png)
+https://github.com/deviantony/docker-elk (also linked in the README of our repository)
 
 ---
 
