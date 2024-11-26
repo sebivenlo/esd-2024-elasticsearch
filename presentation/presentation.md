@@ -139,11 +139,7 @@ table {
 
 # Comparison to RDBMS
 
-| Elasticsearch | RDBMS      |
-|---------------|------------|
-| Cluster       | Database   |
-| Index         | Table      |
-| Document      | Column/row |
+![height:6in](../imgs/EStoSQL.png)
 
 ---
 
@@ -647,7 +643,7 @@ https://www.elastic.co/elasticon/conf/2018/sf/monitor-your-cloud-environment-wit
 https://www.elastic.co/customers/airbus
 https://www.elastic.co/elasticon/tour/2017/munich/distributed-logging-and-monitoring-at-volkswagen-using-the-elastic-stack
 https://www.elastic.co/demo-gallery/ent-search
-
+https://medium.com/@reshra3893/a-beginners-guide-to-elasticsearch-queries-d0205512de2d
 
 
 
