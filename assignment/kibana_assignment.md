@@ -2,8 +2,10 @@
 
 ### Adding data source
 
-Data source:
-- IMDB top movies
+We will work with the list of the 1000 top rated movies by IMDB. 
+Get started by adding the data source IMDB top movies from our [repository](./resources/).
+Click 'Import' and create an index name for it.
+After the data view was created, you can view the index in 'Discover' for the first assignment.
 
 ## 1. Discover data
 
