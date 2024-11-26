@@ -429,12 +429,170 @@ This architecture allows:
 
 ---
 
-# Searching data
-- search queries
-- match, term and range queries
-- advanced search
-- filters
-- keyword vs full-text search
+# <!--fit-->Search queries
+
+---
+
+# Match Query
+
+Used to retrieve documents that match a specific field with a specific value.
+```json
+GET /_search
+{
+  "query": {
+    "match": {
+      "name": {
+        "query": "Matej"
+      }
+    }
+  }
+}
+```
+
+---
+
+# Range Query
+
+Used to retrieve documents within a specific field's specific value range.
+
+```json
+GET /_search
+{
+  "query": {
+    "range": {
+      "age": {
+        "gte": 15,
+        "lte": 30
+      }
+    }
+  }
+}
+```
+
+gte - greater or equal
+lte - less or equal
+
+---
+
+# Bool Query
+Used to create complex logical queries by combining multiple queries.
+
+```json
+POST _search
+{
+  "query": {
+    "bool" : {
+      "must" : {
+        "term" : { "user.id" : "kimchy" }
+      },
+      "filter": {
+        "term" : { "tags" : "production" }
+      },
+      "must_not" : {
+        "range" : {
+          "age" : { "gte" : 10, "lte" : 20 }
+        }
+      },
+      "should" : [
+        { "term" : { "tags" : "env1" } },
+        { "term" : { "tags" : "deployed" } }
+      ],
+      "minimum_should_match" : 1
+    }
+  }
+}
+```
+
+---
+
+# Match Phrase Query
+
+Used for exact phrase matching. It retrieves documents that contain the complete searched phrase.
+- All the terms must appear in the field
+- They must have the same order as the input value
+- There must not be any intervening terms, i.e. be consecutive (potentially excluding stop-words but this can be complicated)
+
+---
+
+# Match Phrase Query
+
+```json
+{ "foo":"I just said hello world" }
+
+{ "foo":"Hello world" }
+
+{ "foo":"World Hello" }
+
+{ "foo":"Hello dear world" }
+```
+This match_phrase query will only return the first and second documents:
+
+```json
+{
+  "query": {
+    "match_phrase": {
+      "foo": "Hello World"
+    }
+  }
+}
+```
+
+---
+
+# Ranking
+
+Allows the organization of search results based on their importance to improve the quality of search outcomes.
+Instead of asking "Is this document relevant?" Elasticsearch asks "How relevant is this document?"
+
+---
+
+# Ranking
+
+- Relevance Ranking: Elasticsearch defaults to using a TF-IDF-based relevance ranking.
+- Field-Based Ranking: This method allows ranking based on the value or score of a specific field.
+- Time-Based Ranking: It is possible to rank documents based on a specific time interval or date.
+- Custom Ranking: Elasticsearch enables users to create custom ranking strategies, allowing them to implement their own ranking logic.
+- Spell Correction: Elasticsearch can automatically correct misspelt or incorrectly written words in queries. Elasticsearch can correct spelling errors by using “fuzzy” queries. Fuzz queries return words similar to a specific word, helping to correct spelling mistakes.
+---
+
+# Ranking
+
+TF-IDF (Term Frequency — Inverse Document Frequency) is a statistical measure used to determine the mathematical importance of words within documents.
+
+- Term Frequency: The number of times a term appears in a document. (Like CTRL + F / CMD + F)
+
+- Inverse Document Frequency: looks across multiple documents within Elasticsearch and tells us that if a term appears too frequently, then there’s a higher probability it’s not as relevant.
+For instance, if we refer to the index of a book, there are particular terms excluded. Terms like "the", “and,”, “of,” are not included within the index. Those terms appear so many times they lose relevance.
+
+---
+
+# Query optimizing
+
+- Use Filters for Non-Scoring Queries: Filters are faster than queries because they do not calculate relevance scores. Use filters for static data or when scoring is not required.
+- Caching: Utilize Elasticsearch's query cache and request cache to speed up repeated queries. Ensure that frequently accessed data is cached. (Indices can be assigned to hot or cold cache based on frequency/importancy of use)
+
+---
+
+# Index strategies
+
+- N-grams/Edge N-grams:
+    - Use n-grams for efficient partial matching.
+    - Specific index fields need to be explicitly configured as N-grams.
+    - N-grams break down text into smaller chunks, allowing for faster searches on partial terms. ("matej" into "m", "ma", "mat", "mate", "matej").
+    This of course increases storage size of the index using N-grams, but is still fast to search as most of the compute intesive work is done while indexing.
+
+---
+
+![](../imgs/ngrams.png)
+
+---
+
+- Keywords with Wildcards:
+    - Use wildcard (*) for pattern matching within strings.
+    - Specific index fields need to be explicitly configured as KEYWORD or WILDCARD type.
+    - The difference from N-grams is that the wildcard pattern matching is done during runtime and is more compute intensive based on how large is the searched index, amount of wildcards used and their position in search query.
+
+So basically these two example strategies make you consider and balance time and space complexity. It's up to the specific use case to decide, which strategy to choose.
 
 ---
 

@@ -287,7 +287,7 @@ An Elasticsearch cluster is a collection of nodes that work together to provide 
 
 # Searching data
 ## Search queries
-Types of Search Queries: Search queries are instructions given to the search engine for users to find what they are looking for in Elasticsearch. Here are some common query types:
+
 
 Match Query: Used to retrieve documents that match a specific field with a specific value.
 ```json
