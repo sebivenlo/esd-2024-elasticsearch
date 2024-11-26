@@ -95,7 +95,7 @@ Elasticsearch is used for a wide and growing range of use cases. Here are a few 
 # Use Cases
 - Volkswagen - uses Elasticsearch for log storage and Kibana for visualization.
 - Airbus - Near Real-Time access to aircraft technical documents (2 billion blocks of technical documents, 3 000 queries per minute). Results under 2 seconds.
-- Microsoft - Azure environment monitoring with Elasticsearch for longs and Kibana for visualizations.
+- Microsoft - Azure environment monitoring with Elasticsearch for logs and Kibana for visualizations.
 - GitHub - search feature. 2 billion documents. Analytics to reveal rogue users and software bugs by indexing all alerts, events, logs and tracking rate of specific code exceptions.
 
 ---
@@ -137,7 +137,7 @@ table {
 
 ---
 
-# Comparisons (to SQL)
+# Comparison to RDBMS
 
 | Elasticsearch | RDBMS      |
 |---------------|------------|
@@ -167,7 +167,7 @@ Data can be inserted into Elasticsearch through:
 
 # How does it work?
 
-Before data is saved to an Index, it is parsed, normalized and tokenized
+Before data is saved to an Index, it is parsed, normalized and tokenized for search token purposes
 
 - Tokenization - input is split into individual terms/tokens. By default divides text on word boundaries and removes most punctuation symbols.
     - "Hello ESD workshop!" -> "Hello", "ESD", "workshop"
@@ -230,7 +230,7 @@ SearchResponse<Product> response = esClient.search(s -> s
 ---
 
 # Document
-- JSON object containing saved data for single object
+- JSON object containing saved data for single item
 - Stored in a specific index with unique ID
 - Collection of fields — which, in turn, are key-value pairs that contain your data
 - Structure defined by index mapping (specifies the data type for each field)
@@ -260,7 +260,7 @@ SearchResponse<Product> response = esClient.search(s -> s
     -  Dynamically mapped data types based on received data
     - Useful for quick start, but can be too basic for advanced use cases
 - Explicit index
-    - Manually configured fields BEFORE any data is saved in the index
+    - Manually configured field data types BEFORE any data is saved in the index
     - Our choice for finer control
 - Most commonly used data types:
     - Boolean, keywords, numbers, dates, text, ...
@@ -412,7 +412,6 @@ An Elasticsearch node is a single instance of Elasticsearch running on a server.
 - Data nodes store the actual data and handle data-related operations
 - Coordinating nodes distribute client requests to the appropriate data nodes
 
-This division of roles helps in managing the workload efficiently and ensures the smooth functioning of the cluster.
 
 ---
 
