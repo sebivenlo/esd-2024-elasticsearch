@@ -71,6 +71,23 @@ https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-create-i
 https://opster.com/guides/elasticsearch/glossary/elasticsearch-data-types/
 
 
+### Solution:
+```
+PUT /movies
+{
+  "mappings": {
+    "properties": {
+      "title": { "type": "text" },
+      "director": { "type": "text" },
+      "year": { "type": "integer" },
+      "genre": { "type": "keyword" },
+      "rating": { "type": "float" }
+    }
+  }
+}
+```
+
+
 ## 2. Add a document to the movies index
 Add the following movie to the index:
 
@@ -80,6 +97,19 @@ Title: "The Shawshank Redemption", Director: "Frank Darabont", Year: 1994, Genre
 https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-index_.html#docs-index-api-example
 
 https://opster.com/guides/elasticsearch/glossary/elasticsearch-document/
+
+### Solution:
+```
+POST /movies/_doc/1
+{
+  "title": "The Shawshank Redemption",
+  "director": "Frank Darabont",
+  "year": 1994,
+  "genre": "Drama",
+  "rating": 9.3
+}
+```
+
 
 ### 2.1. Add following movies to the movies index:
 ```
@@ -117,13 +147,87 @@ POST /_bulk
 ## 3. Search queries
 
 ### 3.1. Write a query to find all movies directed by "Christopher Nolan".
+Solution:
+```
+GET /movies/_search
+{
+  "query": {
+    "match": {
+      "director": "Christopher Nolan"
+    }
+  }
+}
+```
 ### 3.2. Write a query to find all movies with rating greather than 8.7 .
+Solution:
+```
+GET /movies/_search
+{
+  "query": {
+    "range": {
+      "rating": {
+        "gt": 8.7
+      }
+    }
+  }
+}
+```
 ### 3.3. Write a query to find all movies with "Fantasy" genre.
+Solution:
+```
+GET /movies/_search
+{
+  "query": {
+    "match": {
+      "genre": "Fantasy"
+    }
+  }
+}
+```
 ### 3.4. Write a query to find all "Crime" genre movies released before the year 2000.
+Solution:
+```
+GET /movies/_search
+{
+  "query": {
+    "bool": {
+      "must": [
+        { "match": { "genre": "Crime" } },
+        { "range": { "year": { "lt": 2000 } } }
+      ]
+    }
+  }
+}
+```
 ### 3.5. BONUS: Write a query to find all movies released between the years 1990 and 2000 with a rating between 8.5 and 9.0.
-
-
-
+Solution:
+```
+GET /movies/_search
+{
+  "query": {
+    "bool": {
+      "must": [
+        {
+          "range": {
+            "year": {
+              "gte": 1990,
+              "lte": 2000
+            }
+          }
+        },
+        {
+          "range": {
+            "rating": {
+              "gte": 8.5,
+              "lte": 9.0
+            }
+          }
+        }
+      ]
+    }
+  }
+}
+```
 
 **Help**:<br>
 https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-match-query.html
