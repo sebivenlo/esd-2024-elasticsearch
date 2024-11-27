@@ -67,9 +67,10 @@ Elasticsearch is an open-source search and analytics engine that allows for:
 
 # History
 
-- First released in 2010 as Elasticsearch
-- Gained popularity due to search speed, full-text search capability, ability to handle large amounts of data (petabytes) and ability to horizontally scale well.
-- Rebranded to Elastic Stack in 2015 with the addition of Kibana, Logstash and Beats.
+- 2010: First released as Elasticsearch, gaining popularity for its search speed and scalability. (petabytes!)
+- 2015: Rebranded to Elastic Stack with the addition of Kibana, Logstash, and Beats.
+- 2021: Introduced new licensing with restrictions on cloud providers, leading to the creation of OpenSearch (fork) by Amazon.
+- 2024: Elastic NV added AGPLv3 open source license as an option.
 
 ---
 
@@ -116,23 +117,6 @@ table {
 | Cost | Open-source with optional paid features | Proprietary with licensing costs based on data volume |  |  |
 | Integration | Extensive integrations with various data sources | Wide range of third-party integrations |  |  |
 | Use Cases | Log and event data analysis, full-text search, analytics | searching, monitoring, and analyzing machine-generated big data |  |  |
-
----
-
-# Licensing changes - OpenSearch?
-![](../imgs/opensearch_logo.png)
-
----
-
-# Licensing changes - OpenSearch?
-
-- Amazon offered its own "AWS Elasticsearch" Software as a Service product. (Elasticsearch was offering SaaS product as well)
-- Elastic AV argued Amazon is taking advantage of Elasticsearch and not contributing enough to the open-source project.
-- In 2021 Elasticsearch introduced new licensing. It includes restrictions on the use of the software by cloud providers (mainly Amazon).
-- Amazon and some developers argued the new license is no longer truly open-source and forked the last version using the old license under the name "OpenSearch".
-- In September 2024, Elastic NV stated its goals have been met and added AGPLv3 open source license as one of the options.
-
-
 
 ---
 
@@ -253,10 +237,9 @@ SearchResponse<Product> response = esClient.search(s -> s
 - Holds a collection of documents.
 - Implicit index
     -  Dynamically mapped data types based on received data
-    - Useful for quick start, but can be too basic for advanced use cases
+    - Useful for quick start, but can be too basic/wrong for advanced use cases
 - Explicit index
     - Manually configured field data types BEFORE any data is saved in the index
-    - Our choice for finer control
 - Most commonly used data types:
     - Boolean, keywords, numbers, dates, text, ...
 
@@ -543,9 +526,9 @@ Instead of asking "Is this document relevant?" Elasticsearch asks "How relevant 
 # Ranking
 
 - Relevance Ranking: Elasticsearch defaults to using a TF-IDF-based relevance ranking.
-- Field-Based Ranking: This method allows ranking based on the value or score of a specific field.
-- Time-Based Ranking: It is possible to rank documents based on a specific time interval or date.
-- Custom Ranking: Elasticsearch enables users to create custom ranking strategies, allowing them to implement their own ranking logic.
+- Field-Based Ranking: Ranking based on the value or score of a specific field.
+- Time-Based Ranking: Rank documents based on a specific time interval or date.
+- Custom Ranking: User-created ranking strategies. Own logic.
 - Spell Correction: Elasticsearch can automatically correct misspelt or incorrectly written words in queries. Elasticsearch can correct spelling errors by using “fuzzy” queries. Fuzz queries return words similar to a specific word, helping to correct spelling mistakes.
 ---
 
@@ -563,7 +546,7 @@ For instance, if we refer to the index of a book, there are particular terms exc
 # Query optimizing
 
 - Use Filters for Non-Scoring Queries: Filters are faster than queries because they do not calculate relevance scores. Use filters for static data or when scoring is not required.
-- Caching: Utilize Elasticsearch's query cache and request cache to speed up repeated queries. Ensure that frequently accessed data is cached. (Indices can be assigned to hot or cold cache based on frequency/importancy of use)
+- Caching: Utilize Elasticsearch's query cache and request cache to speed up repeated queries.
 
 ---
 
@@ -587,7 +570,6 @@ For instance, if we refer to the index of a book, there are particular terms exc
     - The difference from N-grams is that the wildcard pattern matching is done during runtime and is more compute intensive based on how large is the searched index, amount of wildcards used and their position in search query.
 
 So basically these two example strategies make you consider and balance time and space complexity. It's up to the specific use case to decide, which strategy to choose.
-
 ---
 
 # Kibana 
@@ -714,11 +696,3 @@ https://www.elastic.co/customers/airbus
 https://www.elastic.co/elasticon/tour/2017/munich/distributed-logging-and-monitoring-at-volkswagen-using-the-elastic-stack
 https://www.elastic.co/demo-gallery/ent-search
 https://medium.com/@reshra3893/a-beginners-guide-to-elasticsearch-queries-d0205512de2d
-
-
-
-
-
-
----
-
